@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cart — Aotearoa Adventure Gear</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body>
+<header class="site-header">
+  <nav class="navbar navbar-expand-lg navbar-light container-limited">
+    <a class="navbar-brand" href="index.html"><img src="assets/images/logo.png" alt="logo"></a>
+  </nav>
+</header>
+
+<main>
+  <div class="container container-limited py-4">
+    <h2>Shopping cart</h2>
+    <!-- Cart items table -->
+    <div class="table-responsive">
+      <table class="table align-middle">
+        <thead>
+          <tr><th>Product</th><th>Price</th><th>Qty</th><th>Subtotal</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="d-flex align-items-center">
+                <img src="assets/images/product1.jpg" style="width:70px; height:auto;" alt="">
+                <div class="ms-3">
+                  <a href="product.html">Trail Runner Boots</a>
+                  <div class="small text-muted">Size 9</div>
+                </div>
+              </div>
+            </td>
+            <td>$179.00</td>
+            <td><input type="number" value="1" min="1" class="form-control form-control-sm w-50"></td>
+            <td>$179.00</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <a href="shop.html" class="btn btn-outline-secondary">Continue shopping</a>
+      </div>
+      <aside class="col-md-6 text-md-end">
+        <p class="mb-1">Subtotal: <strong>$179.00</strong></p>
+        <p class="mb-1">Shipping: <strong>Calculated at checkout</strong></p>
+        <a href="shipping.html" class="btn btn-primary">Proceed to shipping</a>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container container-limited"><div class="row"><div class="col">© 2025 Aotearoa Adventure Gear</div></div></div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
