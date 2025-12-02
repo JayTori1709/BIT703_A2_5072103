@@ -7,25 +7,33 @@
 
   <!-- Bootstrap 5 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-  <!-- Font Awesome for icons -->
+
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Custom CSS -->
   <link rel="stylesheet" href="css/custom.css">
 </head>
 <body>
+
 <header class="site-header">
   <nav class="navbar navbar-expand-lg navbar-light container-limited">
     <a class="navbar-brand" href="index.html">
       <img src="assets/images/BIT703-A2-01-AotearoaAdventureGearLogo-Graphic-2025-04.png" alt="Aotearoa Adventure Gear logo">
     </a>
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse" id="mainNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
-        <li class="nav-item"><a class="nav-link" href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+        <li class="nav-item"><a class="nav-link" href="cart.html">
+          <i class="fa fa-shopping-cart"></i> Cart</a></li>
         <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
       </ul>
     </div>
@@ -33,7 +41,8 @@
 </header>
 
 <main>
-  <!-- Hero / Feature banner -->
+
+  <!-- HERO -->
   <section class="hero">
     <div class="container container-limited">
       <div class="row align-items-center">
@@ -49,7 +58,7 @@
     </div>
   </section>
 
-  <!-- Categories section (matches wireframe) -->
+  <!-- CATEGORY GRID -->
   <section class="py-5">
     <div class="container container-limited">
       <h2 class="mb-4">Shop by category</h2>
@@ -62,19 +71,21 @@
             </div>
           </article>
         </div>
-        <!-- repeat for other categories -->
       </div>
     </div>
   </section>
 
-  <!-- Featured products -->
+  <!-- FEATURED PRODUCTS CAROUSEL -->
   <section class="py-4 bg-light">
     <div class="container container-limited">
       <h2 class="mb-3">Featured products</h2>
-      <div class="row g-3">
+
+      <!-- Carousel Track -->
+      <div data-carousel-track class="row g-3">
+
         <div class="col-6 col-md-4 col-lg-3">
           <article class="product-card p-2">
-            <img src="assets/images/product1.jpg" class="img-fluid" alt="Product 1">
+            <img src="assets/images/product1.jpg" class="img-fluid" alt="Rugged Daypack">
             <div class="p-2">
               <h6>Rugged Daypack</h6>
               <p class="mb-1">$119.00</p>
@@ -82,10 +93,19 @@
             </div>
           </article>
         </div>
-        <!-- More product tiles -->
+
+        <!-- Add more product cards here if you want -->
+
       </div>
+
+      <div class="text-center mt-3">
+        <button class="btn btn-outline-secondary me-2" data-carousel-prev>Prev</button>
+        <button class="btn btn-outline-secondary" data-carousel-next>Next</button>
+      </div>
+
     </div>
   </section>
+
 </main>
 
 <footer class="site-footer">
@@ -102,7 +122,12 @@
   </div>
 </footer>
 
-<!-- Bootstrap JS -->
+<!-- Bootstrap bundle -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Custom JS -->
+<script src="js/main.js"></script>
+<script src="js/carousel.js"></script>
+
 </body>
 </html>

@@ -1,59 +1,174 @@
-/* Basic Typography / Branding */
+/* ---------- BRAND VARIABLES ---------- */
 :root{
-  --brand-primary: #0b5a3a;   /* example green — change to match your logo */
-  --brand-accent: #f0c14b;    /* example accent */
+  --brand-primary: #0b5a3a;     /* Main NZ Green */
+  --brand-accent: #f0c14b;      /* Adventure Gold */
+  --brand-light: #f7f7f7;
+  --text-dark: #222;
   --max-width: 1200px;
 }
 
+/* ---------- BASE STYLES ---------- */
 body{
   font-family: 'Roboto', Arial, sans-serif;
-  color:#222;
+  color:var(--text-dark);
   background-color:#fff;
-  line-height:1.5;
+  line-height:1.6;
   margin:0;
 }
 
-/* Header */
+h1, h2, h3, h4, h5{
+  font-weight:700;
+}
+
+a{
+  color:var(--brand-primary);
+  text-decoration:none;
+}
+
+a:hover{
+  color:#063b26;
+  text-decoration:underline;
+}
+
+/* ---------- LAYOUT ---------- */
+.container-limited{
+  max-width:var(--max-width);
+  margin:0 auto;
+  padding-left:15px;
+  padding-right:15px;
+}
+
+/* ---------- HEADER ---------- */
 .site-header{
   border-bottom:1px solid #e6e6e6;
   background:#fff;
 }
+
 .navbar-brand img{
   height:54px;
 }
 
-/* Hero */
+/* ---------- HERO SECTION ---------- */
 .hero{
   padding:48px 0;
-  background:linear-gradient(180deg, rgba(11,90,58,0.06), transparent);
+  background:linear-gradient(180deg, rgba(11,90,58,.08), transparent);
 }
+
+.hero h1{
+  color:var(--brand-primary);
+}
+
 .hero .lead{
   font-size:1.125rem;
 }
 
-/* Product card tweaks */
+/* ---------- PRODUCT CARDS ---------- */
 .product-card{
   border:1px solid #e9e9e9;
   border-radius:8px;
   overflow:hidden;
-  transition:transform .12s ease;
+  background:#fff;
+  transition:transform .15s ease, box-shadow .15s ease;
 }
-.product-card:hover{ transform:translateY(-4px); }
 
-/* Footer */
+.product-card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 6px 12px rgba(0,0,0,.08);
+}
+
+.product-card h6{
+  font-size:.95rem;
+  margin-bottom:.25rem;
+}
+
+.product-card p{
+  color:#333;
+  font-weight:500;
+}
+
+/* ---------- BUTTONS ---------- */
+.btn-outline-primary{
+  border-color:var(--brand-primary);
+  color:var(--brand-primary);
+}
+
+.btn-outline-primary:hover{
+  background:var(--brand-primary);
+  color:#fff;
+}
+
+/* ---------- FORMS ---------- */
+.form-control,
+.form-select{
+  border-radius:4px;
+  font-size:.9rem;
+}
+
+/* ---------- FOOTER ---------- */
 .site-footer{
-  background:#0b5a3a;
+  background:var(--brand-primary);
   color:#fff;
   padding:28px 0;
   margin-top:40px;
 }
-.site-footer a{ color:#fff; text-decoration:none; }
 
-/* Responsive tweaks (fine-tuning for required breakpoints) */
-@media (max-width:575.98px) {
-  .hero{ padding:28px 0; }
-  .navbar-brand img{ height:42px; }
+.site-footer a{
+  color:#fff;
+  text-decoration:none;
 }
-@media (min-width:992px) {
-  .container-limited { max-width: var(--max-width); margin:0 auto; }
+
+.site-footer a:hover{
+  text-decoration:underline;
+}
+
+/* ---------- FLOATING ACTION BUTTON ---------- */
+.fab{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  width:46px;
+  height:46px;
+  display:none;
+  place-items:center;
+  border-radius:50%;
+  background:var(--brand-accent);
+  font-weight:bold;
+  cursor:pointer;
+  border:none;
+  box-shadow:0 4px 10px rgba(0,0,0,.2);
+}
+
+/* ---------- RESPONSIVE DESIGN ---------- */
+
+/* SMALL DEVICES (≤575px) */
+@media (max-width:575.98px){
+
+  .hero{
+    padding:28px 0;
+    text-align:center;
+  }
+
+  .navbar-brand img{
+    height:42px;
+  }
+
+  .product-card h6{
+    font-size:.85rem;
+  }
+
+}
+
+/* MEDIUM DEVICES (≥768px) */
+@media (min-width:768px){
+  .hero .lead{
+    max-width:520px;
+  }
+}
+
+/* LARGE DEVICES (≥992px) */
+@media (min-width:992px){
+  .container-limited{
+    max-width:var(--max-width);
+    margin:0 auto;
+  }
 }
