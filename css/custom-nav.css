@@ -1,0 +1,9 @@
+/* css/custom-nav.css */
+.navbar .cart-btn { display: inline-flex; align-items: center; gap: 8px; }
+.navbar .cart-icon {
+  width: 18px; height: 18px; border: 2px solid #fff; border-radius: 4px; position: relative;
+}
+.navbar .cart-icon::after {
+  content: ""; position: absolute; bottom: -6px; left: 50%; transform: translateX(-50%);
+  width: 8px; height: 6px; background: #fff; border-radius: 2px;
+}

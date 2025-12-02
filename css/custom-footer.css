@@ -1,0 +1,4 @@
+/* css/custom-footer.css */
+.footer-links a { display: block; color: var(--muted); text-decoration: none; margin: 4px 0; }
+.footer-links a:hover { color: var(--text); }
+.address { color: var(--muted); }
