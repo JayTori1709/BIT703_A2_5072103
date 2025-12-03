@@ -5,115 +5,178 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Aotearoa Adventure Gear — Home</title>
 
-  <!-- Bootstrap 5 -->
+  <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 
-  <!-- Font Awesome -->
+  <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <!-- Custom CSS -->
+  <!-- Custom Styling -->
   <link rel="stylesheet" href="css/custom.css">
 </head>
 <body>
 
+<!-- ================= HEADER ================= -->
 <header class="site-header">
   <nav class="navbar navbar-expand-lg navbar-light container-limited">
-    <a class="navbar-brand" href="index.html">
+    <a class="navbar-brand" href="index.html" aria-label="Aotearoa Adventure Gear Home">
       <img src="assets/images/BIT703-A2-01-AotearoaAdventureGearLogo-Graphic-2025-04.png" alt="Aotearoa Adventure Gear logo">
     </a>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="mainNav">
       <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
-        <li class="nav-item"><a class="nav-link" href="cart.html">
-          <i class="fa fa-shopping-cart"></i> Cart</a></li>
-        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        <li class="nav-item">
+          <a class="nav-link" href="cart.html">
+            <i class="fa fa-shopping-cart"></i> Cart
+          </a>
+        </li>
       </ul>
     </div>
   </nav>
 </header>
 
+<!-- ================= MAIN ================= -->
 <main>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="container container-limited">
-      <div class="row align-items-center">
-        <div class="col-lg-6">
-          <h1 class="display-5">Gear for New Zealand's wild places</h1>
-          <p class="lead">Premium outdoor equipment built for the trails, mountains and coasts of Aotearoa.</p>
-          <a href="shop.html" class="btn btn-primary">Shop Now</a>
-        </div>
-        <div class="col-lg-6 d-none d-lg-block">
-          <img src="assets/images/hero-product.jpg" alt="Outdoor gear" class="img-fluid rounded">
-        </div>
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="container container-limited">
+    <div class="row align-items-center">
+      <div class="col-lg-6">
+        <h1 class="display-5">Gear for New Zealand’s wild places</h1>
+        <p class="lead">Premium adventure equipment for bushwalks, alpine hikes and coastal exploration.</p>
+        <a href="shop.html" class="btn btn-primary">Shop Now</a>
+      </div>
+      <div class="col-lg-6 d-none d-lg-block">
+        <img src="assets/images/hero-product.jpg" 
+             alt="Outdoor adventure equipment displayed in a scenic New Zealand setting" 
+             class="img-fluid rounded">
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- CATEGORY GRID -->
-  <section class="py-5">
-    <div class="container container-limited">
-      <h2 class="mb-4">Shop by category</h2>
-      <div class="row g-3">
-        <div class="col-6 col-md-4 col-lg-3">
-          <article class="card text-center p-3">
-            <img src="assets/images/cat-backpacks.jpg" class="card-img-top img-fluid" alt="">
-            <div class="card-body p-2">
-              <h5 class="card-title">Backpacks</h5>
-            </div>
-          </article>
-        </div>
+<!-- ================= CATEGORY GRID ================= -->
+<section class="py-5">
+  <div class="container container-limited">
+    <h2 class="mb-4">Shop by category</h2>
+
+    <div class="row g-3">
+      <div class="col-6 col-md-4 col-lg-3">
+        <article class="card text-center p-3">
+          <img src="assets/images/cat-backpacks.jpg" 
+               class="card-img-top img-fluid" 
+               alt="Backpacks for hiking and travel">
+          <div class="card-body p-2">
+            <h5 class="card-title">Backpacks</h5>
+          </div>
+        </article>
       </div>
+
+      <div class="col-6 col-md-4 col-lg-3">
+        <article class="card text-center p-3">
+          <img src="assets/images/cat-tents.jpg" 
+               class="card-img-top img-fluid" 
+               alt="Camping tents in outdoor setting">
+          <div class="card-body p-2">
+            <h5 class="card-title">Tents</h5>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3">
+        <article class="card text-center p-3">
+          <img src="assets/images/cat-footwear.jpg" 
+               class="card-img-top img-fluid" 
+               alt="Footwear and hiking boots">
+          <div class="card-body p-2">
+            <h5 class="card-title">Footwear</h5>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3">
+        <article class="card text-center p-3">
+          <img src="assets/images/cat-accessories.jpg" 
+               class="card-img-top img-fluid" 
+               alt="Adventure accessories">
+          <div class="card-body p-2">
+            <h5 class="card-title">Accessories</h5>
+          </div>
+        </article>
+      </div>        
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FEATURED PRODUCTS CAROUSEL -->
-  <section class="py-4 bg-light">
-    <div class="container container-limited">
-      <h2 class="mb-3">Featured products</h2>
+<!-- ================= FEATURED PRODUCTS ================= -->
+<section class="py-4 bg-light">
+  <div class="container container-limited">
+    <h2 class="mb-3">Featured products</h2>
 
-      <!-- Carousel Track -->
-      <div data-carousel-track class="row g-3">
+    <div data-carousel-track class="row g-3">
 
-        <div class="col-6 col-md-4 col-lg-3">
-          <article class="product-card p-2">
-            <img src="assets/images/product1.jpg" class="img-fluid" alt="Rugged Daypack">
-            <div class="p-2">
-              <h6>Rugged Daypack</h6>
-              <p class="mb-1">$119.00</p>
-              <a href="product.html" class="btn btn-outline-primary btn-sm">View</a>
-            </div>
-          </article>
-        </div>
-
-        <!-- Add more product cards here if you want -->
-
+      <div class="col-6 col-md-4 col-lg-3">
+        <article class="product-card p-2">
+          <img src="assets/images/product1.jpg" class="img-fluid" alt="Rugged daypack backpack">
+          <div class="p-2">
+            <h6>Rugged Daypack</h6>
+            <p class="mb-1">$119.00</p>
+            <a href="product.html" class="btn btn-outline-primary btn-sm">View</a>
+          </div>
+        </article>
       </div>
 
-      <div class="text-center mt-3">
-        <button class="btn btn-outline-secondary me-2" data-carousel-prev>Prev</button>
-        <button class="btn btn-outline-secondary" data-carousel-next>Next</button>
+      <div class="col-6 col-md-4 col-lg-3">
+        <article class="product-card p-2">
+          <img src="assets/images/product2.jpg" class="img-fluid" alt="Compact hiking tent">
+          <div class="p-2">
+            <h6>Explorer Tent</h6>
+            <p class="mb-1">$420.00</p>
+            <a href="product.html" class="btn btn-outline-primary btn-sm">View</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3">
+        <article class="product-card p-2">
+          <img src="assets/images/product3.jpg" class="img-fluid" alt="Insulated outdoor jacket">
+          <div class="p-2">
+            <h6>Thermal Jacket</h6>
+            <p class="mb-1">$269.00</p>
+            <a href="product.html" class="btn btn-outline-primary btn-sm">View</a>
+          </div>
+        </article>
       </div>
 
     </div>
-  </section>
+
+    <div class="text-center mt-3">
+      <button class="btn btn-outline-secondary me-2" data-carousel-prev>Prev</button>
+      <button class="btn btn-outline-secondary" data-carousel-next>Next</button>
+    </div>
+
+  </div>
+</section>
 
 </main>
 
+<!-- ================= FOOTER ================= -->
 <footer class="site-footer">
   <div class="container container-limited">
     <div class="row">
       <div class="col-md-6">
         <h5>Aotearoa Adventure Gear</h5>
-        <p>123 Trail Road, Auckland 1010 — info@aotearoaadventure.nz</p>
+        <p>123 Trail Road, Auckland 1010<br>info@aotearoaadventure.nz</p>
       </div>
       <div class="col-md-6 text-md-end">
         <small>© 2025 Aotearoa Adventure Gear</small>
@@ -122,10 +185,8 @@
   </div>
 </footer>
 
-<!-- Bootstrap bundle -->
+<!-- ================= SCRIPTS ================= -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-<!-- Custom JS -->
 <script src="js/main.js"></script>
 <script src="js/carousel.js"></script>
 
