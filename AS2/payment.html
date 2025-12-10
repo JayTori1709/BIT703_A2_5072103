@@ -22,18 +22,26 @@
   <div class="container container-limited py-4">
     <h2>Payment options</h2>
 
+    <!-- ORDER SUMMARY DISPLAY -->
+    <div class="alert alert-light border mb-4">
+      <strong>Order Summary</strong><br>
+      Subtotal: <span id="sumSubtotal">$0.00</span><br>
+      Shipping: <span id="sumShipping">$0.00</span><br>
+      <strong>Total: <span id="sumTotal">$0.00</span></strong>
+    </div>
+
     <div class="row g-3">
 
-      <!-- Discount codes -->
+      <!-- Discounts -->
       <div class="col-md-6">
         <div class="card p-3">
           <h5>Discount codes</h5>
-          <p class="small text-muted">Apply promo or discount code.</p>
+          <p class="small text-muted">Apply a discount (demo only).</p>
           <div class="input-group">
-            <input id="discountCode" type="text" class="form-control" placeholder="Enter code">
+            <input id="discountCode" class="form-control" placeholder="Enter code">
             <button id="applyDiscount" class="btn btn-outline-secondary" type="button">Apply</button>
           </div>
-          <div id="discountMsg" class="form-text text-success" style="display:none;">Discount applied.</div>
+          <div id="discountMsg" class="form-text text-success mt-1" style="display:none;">Discount applied.</div>
         </div>
       </div>
 
@@ -41,12 +49,12 @@
       <div class="col-md-6">
         <div class="card p-3">
           <h5>Gift cards</h5>
-          <p class="small text-muted">Redeem a gift card</p>
+          <p class="small text-muted">Redeem a gift card (demo).</p>
           <div class="input-group">
             <input id="giftCard" type="text" class="form-control" placeholder="Gift card code">
             <button id="redeemGift" class="btn btn-outline-secondary" type="button">Redeem</button>
           </div>
-          <div id="giftMsg" class="form-text text-success" style="display:none;">Gift card redeemed.</div>
+          <div id="giftMsg" class="form-text text-success mt-1" style="display:none;">Gift card redeemed.</div>
         </div>
       </div>
 
@@ -56,34 +64,36 @@
           <h5>Card payment</h5>
 
           <form id="paymentForm" class="row g-3 needs-validation" novalidate>
+
             <div class="col-md-12">
-              <label for="cardNumber" class="form-label">Card number</label>
-              <input id="cardNumber" name="cardNumber" type="text" inputmode="numeric" pattern="^\d{13,19}$" class="form-control" placeholder="1234 5678 9012 3456" required>
-              <div class="invalid-feedback">Enter a valid card number (13–19 digits).</div>
+              <label class="form-label">Card number</label>
+              <input id="cardNumber" type="text" class="form-control" pattern="^\d{13,19}$" required>
+              <div class="invalid-feedback">Enter a valid 13–19 digit card number.</div>
             </div>
 
             <div class="col-md-4">
-              <label for="exp" class="form-label">Expiry (MM/YY)</label>
-              <input id="exp" name="exp" type="text" pattern="^(0[1-9]|1[0-2])\/\d{2}$" class="form-control" placeholder="MM/YY" required>
-              <div class="invalid-feedback">Enter expiry in MM/YY format.</div>
+              <label class="form-label">Expiry (MM/YY)</label>
+              <input id="exp" class="form-control" pattern="^(0[1-9]|1[0-2])\/\d{2}$" required>
+              <div class="invalid-feedback">Use MM/YY format.</div>
             </div>
 
             <div class="col-md-4">
-              <label for="cvv" class="form-label">CVV</label>
-              <input id="cvv" name="cvv" type="text" pattern="^\d{3,4}$" class="form-control" placeholder="123" required>
-              <div class="invalid-feedback">Enter a 3–4 digit CVV.</div>
+              <label class="form-label">CVV</label>
+              <input id="cvv" class="form-control" pattern="^\d{3,4}$" required>
+              <div class="invalid-feedback">3–4 digits required.</div>
             </div>
 
             <div class="col-md-4">
-              <label for="holder" class="form-label">Cardholder name</label>
-              <input id="holder" name="holder" type="text" class="form-control" required>
-              <div class="invalid-feedback">Cardholder name required.</div>
+              <label class="form-label">Cardholder name</label>
+              <input id="holder" class="form-control" required>
+              <div class="invalid-feedback">Enter cardholder name.</div>
             </div>
 
             <div class="col-12 text-end">
               <button id="payNow" type="submit" class="btn btn-primary">Pay now (Demo)</button>
               <a href="shipping.html" class="btn btn-outline-secondary">Back</a>
             </div>
+
           </form>
 
         </div>
@@ -101,86 +111,102 @@
   </div>
 </footer>
 
-<!-- Bootstrap JS -->
+<!-- Bootstrap -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- Inline JS: discount/gift demo + payment validation -->
+<!-- PAYMENT LOGIC -->
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  // Demo discount/gift handlers
-  const applyDiscount = document.getElementById('applyDiscount');
-  const discountMsg = document.getElementById('discountMsg');
-  applyDiscount && applyDiscount.addEventListener('click', () => {
-    // Demo: pretend discount applied
-    discountMsg.style.display = 'block';
-    discountMsg.textContent = 'Discount applied (demo).';
-    setTimeout(() => discountMsg.style.display = 'none', 3000);
+
+  // ELEMENTS
+  const subtotalEl = document.getElementById('sumSubtotal');
+  const shippingEl = document.getElementById('sumShipping');
+  const totalEl = document.getElementById('sumTotal');
+
+  // LOAD SUBTOTAL + SHIPPING FROM STORAGE
+  let subtotal = parseFloat(localStorage.getItem('aag_subtotal') || '0');
+  let shippingCost = parseFloat(localStorage.getItem('aag_shipping') || '0');
+  let total = subtotal + shippingCost;
+
+  // DISPLAY TOTALS
+  function updateDisplay() {
+    subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
+    shippingEl.textContent = shippingCost === 0 ? 'FREE' : `$${shippingCost.toFixed(2)}`;
+    totalEl.textContent = `$${total.toFixed(2)}`;
+  }
+  updateDisplay();
+
+  // ------------------------------
+  // DISCOUNT (Demo: $20 off)
+  // ------------------------------
+  document.getElementById('applyDiscount').addEventListener('click', () => {
+    subtotal = Math.max(0, subtotal - 20);
+    total = subtotal + shippingCost;
+    updateDisplay();
+    const msg = document.getElementById('discountMsg');
+    msg.style.display = 'block';
+    msg.textContent = 'Discount applied — $20 off (demo).';
   });
 
-  const redeemGift = document.getElementById('redeemGift');
-  const giftMsg = document.getElementById('giftMsg');
-  redeemGift && redeemGift.addEventListener('click', () => {
-    giftMsg.style.display = 'block';
-    giftMsg.textContent = 'Gift card redeemed (demo).';
-    setTimeout(() => giftMsg.style.display = 'none', 3000);
+  // ------------------------------
+  // GIFT CARD (Demo: subtract $50)
+  // ------------------------------
+  document.getElementById('redeemGift').addEventListener('click', () => {
+    subtotal = Math.max(0, subtotal - 50);
+    total = subtotal + shippingCost;
+    updateDisplay();
+    const msg = document.getElementById('giftMsg');
+    msg.style.display = 'block';
+    msg.textContent = 'Gift card redeemed — $50 off (demo).';
   });
 
-  // Payment form validation
-  const paymentForm = document.getElementById('paymentForm');
+  // ------------------------------
+  // PAYMENT FORM VALIDATION
+  // ------------------------------
+  const form = document.getElementById('paymentForm');
 
-  // Helper: check expiry not in past
-  function expiryValid(mmYY) {
-    if (!/^(0[1-9]|1[0-2])\/\d{2}$/.test(mmYY)) return false;
-    const parts = mmYY.split('/');
-    const mm = parseInt(parts[0], 10);
-    const yy = parseInt(parts[1], 10);
-    // Build a date at end of month
-    const current = new Date();
+  function expiryValid(exp) {
+    if (!/^(0[1-9]|1[0-2])\/\d{2}$/.test(exp)) return false;
+    const [mm, yy] = exp.split('/').map(v => parseInt(v));
     const fullYear = 2000 + yy;
-    const expiryDate = new Date(fullYear, mm, 0, 23, 59, 59); // last day of month
-    return expiryDate >= new Date(current.getFullYear(), current.getMonth(), 1);
+    const expiryDate = new Date(fullYear, mm);
+    return expiryDate > new Date();
   }
 
-  paymentForm && paymentForm.addEventListener('submit', (e) => {
-    // HTML5 validity
-    if (!paymentForm.checkValidity()) {
+  form.addEventListener('submit', e => {
+    if (!form.checkValidity()) {
       e.preventDefault();
       e.stopPropagation();
-      paymentForm.classList.add('was-validated');
+      form.classList.add('was-validated');
       return;
     }
 
-    // Extra JS checks
-    const cardNumber = document.getElementById('cardNumber').value.replace(/\s+/g, '');
+    const errors = [];
+    const n = document.getElementById('cardNumber').value.trim();
     const exp = document.getElementById('exp').value.trim();
     const cvv = document.getElementById('cvv').value.trim();
     const holder = document.getElementById('holder').value.trim();
 
-    const errors = [];
-    if (!/^\d{13,19}$/.test(cardNumber)) errors.push('Invalid card number (13–19 digits).');
-    if (!expiryValid(exp)) errors.push('Invalid or expired expiry date (MM/YY).');
-    if (!/^\d{3,4}$/.test(cvv)) errors.push('Invalid CVV (3–4 digits).');
-    if (holder.length === 0) errors.push('Cardholder name is required.');
+    if (!/^\d{13,19}$/.test(n)) errors.push('Invalid card number.');
+    if (!expiryValid(exp)) errors.push('Invalid expiry date.');
+    if (!/^\d{3,4}$/.test(cvv)) errors.push('Invalid CVV.');
+    if (!holder) errors.push('Enter cardholder name.');
 
     if (errors.length) {
       e.preventDefault();
-      e.stopPropagation();
-      paymentForm.classList.add('was-validated');
-      alert('Payment form errors:\n' + errors.join('\n'));
+      alert('Payment errors:\n' + errors.join('\n'));
       return;
     }
 
-    // Demo: store order summary and redirect to confirmation page
-    e.preventDefault();
-    // Optionally read totals from localStorage (set on shipping page)
-    const subtotal = localStorage.getItem('aag_subtotal') || '0.00';
-    const shipping = localStorage.getItem('aag_shipping') || '0.00';
-    const total = localStorage.getItem('aag_total') || subtotal;
-    localStorage.setItem('aag_payment_method', 'card');
+    // SAVE ORDER FOR CONFIRMATION PAGE
+    localStorage.setItem('aag_total', total.toFixed(2));
+    localStorage.setItem('aag_payment_method', 'Card');
     localStorage.setItem('aag_cardholder', holder);
-    // Redirect to a confirmation page (static demo)
+
+    e.preventDefault();
     window.location.href = 'confirmation.html';
   });
+
 });
 </script>
 
